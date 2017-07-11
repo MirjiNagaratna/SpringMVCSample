@@ -1,0 +1,9 @@
+<!-- Bean definitions related to Contact Us page  -->
+	<alias name="defaultContactFacade" alias="contactFacade"/>
+	<bean id="" class="au.com.cnw.facades.contact.impl.DefaultContactFacade">
+	</bean>
+	
+	<alias name="contactEmailContext" alias="contEmailContext"/>
+	<bean id="contactEmailContext" class="au.com.cnw.facades.process.email.context.ContactEmailContext" parent="abstractEmailContext"
+		scope="prototype">
+	</bean>

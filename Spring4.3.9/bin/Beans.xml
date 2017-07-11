@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+   
+   <bean id="helloWorldBean" class="com.sonata.mirji.firstspring.HelloWorld" >
+   <property name="msg" value="hello" ></property>
+   </bean>
+   
+   <!-- Scop -->
+   <bean id="student" class="com.sonata.mirji.scope.Student" scope="prototype">
+   </bean>
+   
+   <!-- LifeCycle -->
+   <bean id="exampleBean" class="com.sonata.mirji.Lifecycle.ExampleBean" init-method="init" destroy-method="destroy">
+   <property name="name" value="NAgaratna"></property>
+   </bean>
+   
+   <!-- BeanPostProcessor -->
+   <!-- <bean id="student" class="com.sonata.mirji.beanpostprocessor.Student" ></bean> -->
+   <bean id="student1"  class="com.sonata.mirji.beanpostprocessor.Student" init-method="afterPropertiesSet" destroy-method="destroy">
+   </bean>
+   
+<!--    <bean class="com.sonata.mirji.beanpostprocessor.InitClass"></bean> -->
+
+	<!-- Bean Inheritance -->
+	<bean id="studentInheriatnce" class="com.sonata.mirji.beanInheritance.Student" parent="studentClass">
+		<property name="name" value="Nagaratna"></property>
+	</bean>
+	<bean id="studentClass" class="com.sonata.mirji.beanInheritance.StudentClass">
+		<property name="id" value="12672"></property>
+	</bean>
+	
+	<!-- injecting Beans -->
+	
+	<bean id="textEditor" class="com.sonata.mirji.injectingBean.TextEditor">
+	<property name="spellChecker">
+		<bean id="spellCheckerBean" class="com.sonata.mirji.injectingBean.SpellChecker"></bean>
+	</property>
+	</bean>
+	
+	<!-- Collection -->
+	<bean id="classCollection" class="com.sonata.mirji.collection.ClassCollection">
+		<property name="studentIdList">
+			<list>
+				<value>10</value>
+				<value>20</value>
+				<value>30</value>
+			</list>
+		</property>
+		<property name="idNameMap">
+			<map>
+				<entry key="10" value="NAGARATNA"></entry>
+				<entry key="20" value="MIRJI"></entry>
+				<entry key="30" value="KAVAYA"></entry>
+			</map>
+		</property>
+		<property name="studentProp">
+			<props>
+				<prop key="10">XYZ</prop>
+				<prop key="20">ABC</prop>
+				<prop key="30">YXN</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+	<!-- AutoWire -->
+	<bean id="studentAutoWire" class="com.sonata.mirji.autowire.StudentAutoWire"></bean>
+	<bean id="classStudent" class="com.sonata.mirji.autowire.ClassStudent" autowire="byType"></bean>
+	
+	
+	<!-- Event Handler -->
+	<bean id="helloWorld" class="com.sonata.mirji.eventhandler.HelloWorld">
+		<property name="msg" value="hiiiiiiiiiiiiiiiiiiiiiii"></property>
+	</bean>
+	<bean id="cStartEventHandler" class="com.sonata.mirji.eventhandler.CStartEventHandler"></bean>
+	
+	
+	
+	<!-- JDBC framework -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/TEST" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
+	
+	
+</beans>

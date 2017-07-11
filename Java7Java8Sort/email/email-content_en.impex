@@ -1,0 +1,5 @@
+# Email velocity templates
+UPDATE RendererTemplate;code[unique=true];description[lang=$lang];templateScript[lang=$lang,translator=de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+;cnw_Email_Contact_Subject;Contact Us Email Subject;$emailResource/email-contactSubject.vm
+;cnw_Email_Contact_Body;Contact Us Email Body;$emailResource/email-contactBody.vm
+ 

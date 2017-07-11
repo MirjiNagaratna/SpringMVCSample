@@ -1,0 +1,13 @@
+<alias name="defaultContactService" alias="contactService" />
+	<bean id="defaultContactService" class="au.com.cnw.core.services.impl.DefaultContactService" parent="defaultCustomerAccountService">
+		<property name="eventService" ref="eventService" />
+	</bean>
+	
+	<bean id="contactEmailProcessDefinitionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource" value="classpath:/cnwcore/processes/contactEmailProcess.xml" />
+	</bean>
+	
+	
+	<bean id="contactEmail" parent="abstractGenerateEmailAction">
+		<property name="frontendTemplateName" value="ContactEmailTemplate" />
+	</bean>
